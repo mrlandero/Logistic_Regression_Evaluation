@@ -30,7 +30,8 @@ Using bulleted lists, describe the balanced accuracy scores and the precision an
 ## Summary
 
 Summarize the results of the machine learning models, and include a recommendation on the model to use, if any. For example:
-* Which one seems to perform best? How do you know it performs best?
-* Does performance depend on the problem we are trying to solve? (For example, is it more important to predict the `1`'s, or predict the `0`'s? )
+* The model that performs the best is Machine Model 2, although it is very close overall. The reason it performed better is because it had a better `balanced_accuracy_score` and a better `recall`. This means that the oversampled model predicted more labels right overall, and for `class 1`, which is the one that matters to us, the recall was better. This means that Model 2 was better at predicting the true defaulting loans. It is 1% difference from Model 2 to Model 1, but when talking about finances, 1% can make an enormous difference. 
+My recommendation is to use Model 2 because it is better at recalling class 1, which is why we built this model to begin with. This means that we will be able to better predict when a loan will default. However, it is always a good idea to try another model, as well, to analyze this question differently. 
 
-If you do not recommend any of the models, please justify your reasoning.
+* Performance is strictly limited by the problem we are trying to solve. In this case, for example, we are extremely interested in the predictions for `class 1`. The reasoning behind this is that we want to filter out the borrowers who have a high risk of defaulting. It would be detrimental to our business if we are extending loans to borrowers who will not pay us back. If we accidently deny a loan to a person who is not in `class 1` we might lose their business, but it doesn't pose a greater risk past this. However, if we are extending loans to borrowers in `class 1`, we are losing money. If this continues without us correcting our model, we can eventually go out of business.  
+
