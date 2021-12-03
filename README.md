@@ -192,7 +192,7 @@ Step 8: Save the predictions on the testing data labels by using the testing fea
 y_original_pred = lr_original_model.predict(X_test_scaled)
 ```
 
-Step 9: Step 3: Evaluate the model’s performance by doing the following:
+Step 9: Evaluate the model’s performance by doing the following:
 
 * Calculate the accuracy score of the model.
 
@@ -213,3 +213,69 @@ Next, we'll display the confusion matrix:
 Finally, we'll display the classification report:
 
 ![Model One Classification Report](first_creport.png)
+
+Step 10: Use the `RandomOverSampler` module from the imbalanced-learn library to resample the data. Be sure to confirm that the labels have an equal number of data points:
+
+```python
+# Import the RandomOverSampler module form imbalanced-learn
+from imblearn.over_sampling import RandomOverSampler
+
+# Instantiate the random oversampler model
+# # Assign a random_state parameter of 1 to the model
+random_oversampler = RandomOverSampler(random_state=1)
+
+# Fit the original training data to the random_oversampler model
+X_resampled, y_resampled = random_oversampler.fit_resample(X_train_scaled, y_train)
+```
+
+```python
+# Count the distinct values of the resampled labels data
+y_resampled.value_counts()
+```
+The following image displays the result from running these cells:
+
+![Value Counts Oversampled Data](y_balanced.png)
+
+As we can see, our classes are now balanced. This means the model will have the potential to be more accurate for both classes.
+
+Step 11: Use the `LogisticRegression` classifier and the resampled data to fit the model and make predictions:
+
+```python
+# Instantiate the Logistic Regression model
+# Assign a random_state parameter of 1 to the model
+model = LogisticRegression(random_state=1)
+
+# Fit the model using the resampled training data
+lr_resampled_model = model.fit(X_resampled, y_resampled)
+
+# Make a prediction using the testing data
+y_resampled_pred = lr_resampled_model.predict(X_test_scaled)
+```
+
+Step 12: Evaluate the model’s performance by doing the following:
+
+* Calculate the accuracy score of the model.
+
+* Generate a confusion matrix.
+
+* Print the classification report.
+
+The following image displays the result from the accuracy score of the model:
+
+![Model 2 Accuracy Score](second_bas.png)
+
+From the image, we can tell that the model achieved an accuracy score of 99.3% given oversampled, balanced, data. The second model improved on recall by approximately 1% after oversampling the minority class. 
+
+Next, we'll display the confusion matrix:
+
+![Model Two Confusion Matrix](second_cm.png)
+
+Finally, we'll display the classification report:
+
+![Model Two Classification Report](second_creport.png)
+
+Step 13: Analyze the performance of both models:
+
+The resampled data model continued to predict `0` at a very high percentage. The precision and recall remained the same at 100% and 99% respectively. It even managed to improve on the geo and spe metrics, albeit slightly.
+However, when it comes to the `1` class, the recall did improve from 98% to 99%. This means that the ability for the model to predict high-risk-loans improved from the original, imbalanced, data. As we'd expect, with this increase in recall, we do have a small decline in precision. It went from 84% in the original data, to 83% in the resampled data. Recall and precision historically have a negative correlation. The more labels the model predicts correctly (recall), our confidence in those labels declines slightly (precision).
+
