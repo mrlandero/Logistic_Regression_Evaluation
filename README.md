@@ -285,3 +285,9 @@ However, when it comes to the `1` class, the recall did improve from 98% to 99%.
 
 **Created by:** Tony Landero<br>
 **Email Adress:** mr.landero@gmail.com
+
+---
+
+## License
+
+MIT
