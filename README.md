@@ -59,3 +59,30 @@ conda list imbalanced-learn
 4. Note that the result on your screen should resemble the following image:
 
 ![ImbalancedLearn Library](imblearn_list.png)
+
+
+### Install PyDotPlus
+
+1. If your `dev` virtual environment is still active, skip to Step 2. Otherwise, activate your `dev` virtual environment by running the following command:
+
+```python
+conda activate dev
+```
+
+2. Install PyDotPlus by running the following command:
+
+```python
+conda install -c conda-forge pydotplus
+```
+
+3. Verify the installation by running the following command:
+
+```python
+conda list pydotplus
+```
+
+Note that the result on your screen should resemble the following image:
+
+![Pydotplus Library](pydot_list.png)
+
+You're now all set up!
