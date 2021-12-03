@@ -138,3 +138,78 @@ In the preceding image we can see that only the target `y` column is in this dat
 ![X_split DataFrame](x_split.png)
 
 In the image above, we can verify that the target `y` column has been removed from this DataFrame.
+
+
+Step 4: Check the balance of the labels variable (`y`) by using the `value_counts` function:
+
+![Value Counts Method](first_value_counts.png)
+
+In the preceding image we can easily see the imbalance in the magnitude of classes.
+
+Step 5: Split the data into training and testing datasets by using `train_test_split`:
+
+```python
+# Import the train_test_learn module
+from sklearn.model_selection import train_test_split
+
+# Split the data using train_test_split
+# Assign a random_state of 1 to the function
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1)
+```
+
+Step 6: Scale the Data:
+
+```python
+# Scale the data for X
+scaler = StandardScaler()
+X_scaler = scaler.fit(X_train)
+X_train_scaled = X_scaler.transform(X_train)
+X_test_scaled = X_scaler.transform(X_test)
+```
+
+Step 7: Fit a logistic regression model by using the training data (`X_train` and `y_train`):
+
+```python
+# Import the LogisticRegression module from SKLearn
+from sklearn.linear_model import LogisticRegression
+
+# Instantiate the Logistic Regression model
+# Assign a random_state parameter of 1 to the model
+model = LogisticRegression(random_state=1)
+
+# Fit the model using training data
+lr_original_model = model.fit(X_train_scaled, y_train)
+lr_original_model
+```
+The following image shows the result from running this cell:
+
+![Logistic Regression Model](first_lrm.png)
+
+Step 8: Save the predictions on the testing data labels by using the testing feature data (`X_test`) and the fitted model:
+
+```python
+# Make a prediction using the testing data
+y_original_pred = lr_original_model.predict(X_test_scaled)
+```
+
+Step 9: Step 3: Evaluate the model’s performance by doing the following:
+
+* Calculate the accuracy score of the model.
+
+* Generate a confusion matrix.
+
+* Print the classification report.
+
+The following image displays the result from the accuracy score of the model:
+
+![Model One Accuracy Score](first_bas.png)
+
+From the image, we can tell that the model achieved an accuracy score of 98.9% given original, imbalanced, data.
+
+Next, we'll display the confusion matrix:
+
+![Model One Confusion Matrix](first_cm.png)
+
+Finally, we'll display the classification report:
+
+![Model One Classification Report](first_creport.png)
