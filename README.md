@@ -279,3 +279,9 @@ Step 13: Analyze the performance of both models:
 The resampled data model continued to predict `0` at a very high percentage. The precision and recall remained the same at 100% and 99% respectively. It even managed to improve on the geo and spe metrics, albeit slightly.
 However, when it comes to the `1` class, the recall did improve from 98% to 99%. This means that the ability for the model to predict high-risk-loans improved from the original, imbalanced, data. As we'd expect, with this increase in recall, we do have a small decline in precision. It went from 84% in the original data, to 83% in the resampled data. Recall and precision historically have a negative correlation. The more labels the model predicts correctly (recall), our confidence in those labels declines slightly (precision).
 
+---
+
+## Contributors
+
+**Created by:** Tony Landero<br>
+**Email Adress:** mr.landero@gmail.com
