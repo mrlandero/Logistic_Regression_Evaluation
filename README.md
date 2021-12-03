@@ -27,3 +27,35 @@ built on top of the Python programming language.<br>
 **[SkLearn.linear_model Logistic Regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)** - Logistic Regression (aka logit, MaxEnt) classifier.<br>
 
 **[imblearn.over_sampling Random Over Sampler](https://imbalanced-learn.org/dev/references/generated/imblearn.over_sampling.RandomOverSampler.html)** - Class to perform random over-sampling.
+
+---
+
+## Installation Guide
+
+Before running the application first install the following dependencies:
+
+For this application, you need to add the imbalanced-learn and PyDotPlus libraries to your `dev` virtual environment. The imbalanced-learn library has models that were developed specifically to deal with class imbalance. You’ll use PyDotPlus to plot a decision tree.
+
+### Install imbalance-learn
+
+1. Open a terminal window, and then activate your `dev` virtual environment by running the following command:
+
+```python
+conda activate dev
+```
+
+2. Install imbalance-learn by running the following command:
+
+```python
+conda install -c conda-forge imbalanced-learn
+```
+
+3. Verify the installation by running the following command:
+
+```python
+conda list imbalanced-learn
+```
+
+4. Note that the result on your screen should resemble the following image:
+
+![ImbalancedLearn Library](imblearn_list.png)
